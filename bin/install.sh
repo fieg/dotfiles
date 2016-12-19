@@ -77,7 +77,7 @@ success 'developer tools'
 (test $(which brew) || install_brew) && success 'homebrew'
 
 # Install apps
-#brew bundle
+brew bundle
 
 # Ask for the administrator password upfront
 user "I need you to enter your sudo password so I can install some things:"
