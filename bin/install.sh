@@ -50,6 +50,17 @@ install_dotfiles () {
   /usr/bin/env git clone https://github.com/fieg/dotfiles.git $DOTDIR
 }
 
+update_dotfiles () {
+  info 'update dotfiles'
+  pushd $DOTDIR > /dev/null 2>&1
+  git stash
+  if git pull origin master
+  then
+    git stash apply
+  fi
+  popd > /dev/null 2>&1
+}
+
 # install command line tools so we have git
 # loops while we don't have the tools installed
 xcode-select -p > /dev/null 2>&1
@@ -70,7 +81,7 @@ success 'developer tools'
 (test $(which ruby) || fail 'ruby not installed') && success 'ruby'
 
 # Clone dotfiles
-(test -d $DOTDIR || install_dotfiles) && success 'dotfiles'
+((test -d $DOTDIR && update_dotfiles) || install_dotfiles) && success 'dotfiles'
 
 # Git config
 (test -f $DOTDIR/formulas/git/.gitconfig.local || setup_gitconfig) && success 'gitconfig'
@@ -93,7 +104,7 @@ popd > /dev/null 2>&1
 
 # set zsh as the user login shell
 CURRENTSHELL=$(dscl . -read /Users/$USER UserShell | awk '{print $2}')
-if [[ "$CURRENTSHELL" != "/usr/local/bin/zsh" -a -e /usr/local/bin/zsh ]]; then
+if [[ "$CURRENTSHELL" != "/usr/local/bin/zsh" && -e /usr/local/bin/zsh ]]; then
   info "setting newer homebrew zsh (/usr/local/bin/zsh) as your shell"
   # sudo bash -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
   # chsh -s /usr/local/bin/zsh
