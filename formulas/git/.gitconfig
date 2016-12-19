@@ -46,7 +46,3 @@
 
 [push]
 	default = simple
-
-[user]
-	name = fieg
-	email = jeroen@fieg.nl
