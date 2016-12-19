@@ -86,7 +86,10 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 (test $(which brew) || install_brew) && success 'homebrew'
 
 # Install apps
+
+pushd $DOTDIR > /dev/null 2>&1
 brew bundle
+popd > /dev/null 2>&1
 
 # set zsh as the user login shell
 CURRENTSHELL=$(dscl . -read /Users/$USER UserShell | awk '{print $2}')
@@ -185,4 +188,8 @@ link_file "$DOTDIR/formulas/bash/.inputrc"
 link_file "$DOTDIR/formulas/zsh/.zshrc"
 
 # Install pure prompt
-npm install --global pure-prompt
+if [ ! -e /usr/local/lib/node_modules/pure-prompt ]
+then
+  npm install --global pure-prompt
+fi
+success 'pure-prompt installed'
