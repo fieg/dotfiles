@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Exit if any subcommand or pipeline returns a non-zero status
-set -e
+#set -e
 
 info () {
   printf "\r\033[0;34m❯\033[0m $1\n"
@@ -38,7 +38,7 @@ setup_gitconfig () {
   sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" formulas/git/.gitconfig.local.template > formulas/git/.gitconfig.local
 }
 
-instal_brew () {
+install_brew () {
   info 'install homebrew'
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
@@ -67,11 +67,11 @@ success 'developer tools'
 (test $(which git) || fail 'git not installed') && success 'git'
 (test $(which ruby) || fail 'ruby not installed') && success 'ruby'
 
-# Git config
-(test -f formulas/git/.gitconfig.local || setup_gitconfig) && success 'gitconfig'
-
 # Clone dotfiles
 (test -d ~/.dotfiles || install_dotfiles) && success 'dotfiles'
+
+# Git config
+(test -f formulas/git/.gitconfig.local || setup_gitconfig) && success 'gitconfig'
 
 # Homebrew
 (test $(which brew) || install_brew) && success 'homebrew'
