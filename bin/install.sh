@@ -32,9 +32,9 @@ setup_gitconfig () {
     git_credential='osxkeychain'
   fi
 
-  user 'What is your github author name?'
+  user -e 'What is your github author name?' </dev/tty
   read git_authorname
-  user 'What is your github author email?'
+  user -e 'What is your github author email?' </dev/tty
   read git_authoremail
 
   sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" $DOTDIR/formulas/git/.gitconfig.local.template > $DOTDIR/formulas/git/.gitconfig.local
