@@ -30,3 +30,6 @@ do
 done
 
 unset config_files
+
+autoload -U promptinit; promptinit
+prompt pure

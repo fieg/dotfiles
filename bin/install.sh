@@ -183,3 +183,6 @@ link_file "$DOTDIR/formulas/vim/.vimrc"
 link_file "$DOTDIR/formulas/wget/.wgetrc"
 link_file "$DOTDIR/formulas/bash/.inputrc"
 link_file "$DOTDIR/formulas/zsh/.zshrc"
+
+# Install pure prompt
+npm install --global pure-prompt
