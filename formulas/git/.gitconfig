@@ -1,0 +1,52 @@
+# Local/private config goes in the include
+[include]
+    path = ~/.gitconfig.local
+
+[hub]
+    protocol = https
+
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+
+[core]
+	# Use custom `.gitignore`
+	excludesfile = ~/.gitignore
+	autocrlf = input
+	editor = vim
+
+[color]
+	# Use colors in Git commands that are capable of colored output when outputting to the terminal
+	ui = auto
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[merge]
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
+
+# Use `origin` as the default remote on the `master` branch in all cases
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+
+[push]
+	default = simple
+
+[user]
+	name = fieg
+	email = jeroen@fieg.nl

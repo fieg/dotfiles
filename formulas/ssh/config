@@ -1,0 +1,10 @@
+ServerAliveInterval 300
+ServerAliveCountMax 36
+
+Host 127.0.0.1
+   StrictHostKeyChecking no
+   UserKnownHostsFile=/dev/null
+
+Host localhost
+   StrictHostKeyChecking no
+   UserKnownHostsFile=/dev/null
