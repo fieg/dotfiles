@@ -3,7 +3,7 @@ export DOTDIR=$HOME/.dotfiles
 
 # all of our zsh files
 typeset -U config_files
-config_files=(DOTDIR/**/*.zsh)
+config_files=($DOTDIR/**/*.zsh)
 
 export PATH="/usr/local/bin:/usr/local/sbin:$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:$DOTDIR/formulas/bin"
 

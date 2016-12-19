@@ -3,6 +3,8 @@
 # Exit if any subcommand or pipeline returns a non-zero status
 #set -e
 
+DOTDIR=$HOME/.dotfiles
+
 info () {
   printf "\r\033[0;34m❯\033[0m $1\n"
 }
@@ -31,11 +33,11 @@ setup_gitconfig () {
   fi
 
   user 'What is your github author name?'
-  read -e git_authorname
+  read git_authorname
   user 'What is your github author email?'
-  read -e git_authoremail
+  read git_authoremail
 
-  sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" formulas/git/.gitconfig.local.template > formulas/git/.gitconfig.local
+  sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" $DOTDIR/formulas/git/.gitconfig.local.template > $DOTDIR/formulas/git/.gitconfig.local
 }
 
 install_brew () {
@@ -45,7 +47,7 @@ install_brew () {
 
 install_dotfiles () {
   info 'install dotfiles'
-  /usr/bin/env git clone https://github.com/fieg/dotfiles.git ~/.dotfiles
+  /usr/bin/env git clone https://github.com/fieg/dotfiles.git $DOTDIR
 }
 
 # install command line tools so we have git
@@ -68,16 +70,10 @@ success 'developer tools'
 (test $(which ruby) || fail 'ruby not installed') && success 'ruby'
 
 # Clone dotfiles
-(test -d ~/.dotfiles || install_dotfiles) && success 'dotfiles'
+(test -d $DOTDIR || install_dotfiles) && success 'dotfiles'
 
 # Git config
-(test -f formulas/git/.gitconfig.local || setup_gitconfig) && success 'gitconfig'
-
-# Homebrew
-(test $(which brew) || install_brew) && success 'homebrew'
-
-# Install apps
-brew bundle
+(test -f $DOTDIR/formulas/git/.gitconfig.local || setup_gitconfig) && success 'gitconfig'
 
 # Ask for the administrator password upfront
 user "I need you to enter your sudo password so I can install some things:"
@@ -85,6 +81,12 @@ sudo -v
 
 # Keep-alive: update existing sudo time stamp until the script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Homebrew
+(test $(which brew) || install_brew) && success 'homebrew'
+
+# Install apps
+brew bundle
 
 # set zsh as the user login shell
 CURRENTSHELL=$(dscl . -read /Users/$USER UserShell | awk '{print $2}')
@@ -97,7 +99,7 @@ fi
 success 'shell changed'
 
 link_file () {
-  local src="$(pwd)/$1" dst="$HOME/${2:-$(basename $1)}"
+  local src="$1" dst="$HOME/${2:-$(basename $1)}"
 
   local overwrite= backup= skip=
   local action=
@@ -166,18 +168,18 @@ link_file () {
 
   if [ "$skip" != "true" ]  # "false" or empty
   then
-    ln -s "$1" "$2"
+    ln -s "$src" "$dst"
     success "$src → $dst"
   fi
 }
 
 overwrite_all=false backup_all=false skip_all=false
 
-link_file "formulas/git/.gitconfig.local"
-link_file "formulas/git/.gitconfig"
-link_file "formulas/git/.gitignore"
-link_file "formulas/ssh/config" ".ssh/config"
-link_file "formulas/vim/.vimrc"
-link_file "formulas/wget/.wgetrc"
-link_file "formulas/bash/.inputrc"
-link_file "formulas/zsh/.zshrc"
+link_file "$DOTDIR/formulas/git/.gitconfig.local"
+link_file "$DOTDIR/formulas/git/.gitconfig"
+link_file "$DOTDIR/formulas/git/.gitignore"
+link_file "$DOTDIR/formulas/ssh/config" ".ssh/config"
+link_file "$DOTDIR/formulas/vim/.vimrc"
+link_file "$DOTDIR/formulas/wget/.wgetrc"
+link_file "$DOTDIR/formulas/bash/.inputrc"
+link_file "$DOTDIR/formulas/zsh/.zshrc"
