@@ -93,7 +93,7 @@ popd > /dev/null 2>&1
 
 # set zsh as the user login shell
 CURRENTSHELL=$(dscl . -read /Users/$USER UserShell | awk '{print $2}')
-if [[ "$CURRENTSHELL" != "/usr/local/bin/zsh" ]]; then
+if [[ "$CURRENTSHELL" != "/usr/local/bin/zsh" -a -e /usr/local/bin/zsh ]]; then
   info "setting newer homebrew zsh (/usr/local/bin/zsh) as your shell"
   # sudo bash -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
   # chsh -s /usr/local/bin/zsh
