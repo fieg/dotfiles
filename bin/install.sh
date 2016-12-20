@@ -205,7 +205,13 @@ then
 fi
 success 'pure-prompt installed'
 
-
 # Install terminal theme
 open "$DOTDIR/formulas/terminal/Snazzy.terminal"
 success 'terminal theme installed'
+
+info 'running macOs software update'
+sudo softwareupdate -i -a
+success 'softwareupdate'
+
+
+
