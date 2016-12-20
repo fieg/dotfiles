@@ -204,3 +204,8 @@ then
   npm install --global pure-prompt
 fi
 success 'pure-prompt installed'
+
+
+# Install terminal theme
+open "$DOTDIR/formulas/terminal/Snazzy.terminal"
+success 'terminal theme installed'

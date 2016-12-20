@@ -31,5 +31,8 @@ done
 
 unset config_files
 
+setopt autocd
+setopt extendedglob
+
 autoload -U promptinit; promptinit
 prompt pure
