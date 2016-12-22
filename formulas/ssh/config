@@ -1,6 +1,11 @@
 ServerAliveInterval 300
 ServerAliveCountMax 36
 
+Host *
+   UseKeychain yes
+   IdentityFile /Users/jeroen/.ssh/id_rsa
+   AddKeysToAgent yes
+
 Host 127.0.0.1
    StrictHostKeyChecking no
    UserKnownHostsFile=/dev/null
