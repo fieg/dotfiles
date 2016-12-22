@@ -192,6 +192,7 @@ overwrite_all=false backup_all=false skip_all=false
 link_file "$DOTDIR/formulas/git/.gitconfig.local"
 link_file "$DOTDIR/formulas/git/.gitconfig"
 link_file "$DOTDIR/formulas/git/.gitignore"
+test -d ~/.ssh || mkdir ~/.ssh
 link_file "$DOTDIR/formulas/ssh/config" ".ssh/config"
 link_file "$DOTDIR/formulas/vim/.vimrc"
 link_file "$DOTDIR/formulas/wget/.wgetrc"
@@ -206,8 +207,8 @@ fi
 success 'pure-prompt installed'
 
 # Install terminal theme
-open "$DOTDIR/formulas/terminal/Snazzy.terminal"
-success 'terminal theme installed'
+#open "$DOTDIR/formulas/terminal/Snazzy.terminal"
+info "To install Terminal theme, run:\n\n  open $DOTDIR/formulas/terminal/Snazzy.terminal"
 
 #info 'running macOs software update'
 #sudo softwareupdate -i -a
