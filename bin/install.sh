@@ -81,7 +81,7 @@ success 'developer tools'
 (test $(which ruby) || fail 'ruby not installed') && success 'ruby'
 
 # Clone dotfiles
-((test -d $DOTDIR && update_dotfiles) || install_dotfiles) && success 'dotfiles'
+( (test -d $DOTDIR && update_dotfiles) || install_dotfiles) && success 'dotfiles'
 
 # Git config
 (test -f $DOTDIR/formulas/git/.gitconfig.local || setup_gitconfig) && success 'gitconfig'
@@ -209,9 +209,9 @@ success 'pure-prompt installed'
 open "$DOTDIR/formulas/terminal/Snazzy.terminal"
 success 'terminal theme installed'
 
-info 'running macOs software update'
-sudo softwareupdate -i -a
-success 'softwareupdate'
+#info 'running macOs software update'
+#sudo softwareupdate -i -a
+#success 'softwareupdate'
 
 
 
