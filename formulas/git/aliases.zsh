@@ -1,2 +1,2 @@
 alias gfa='git fetch --all'
-alias gbranch='git checkout -B master origin/master'
+alias gbranch='git checkout -B master origin/master --track'
