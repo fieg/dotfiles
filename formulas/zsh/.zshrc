@@ -23,6 +23,10 @@ done
 autoload -U compinit
 compinit
 
+# Bash style word selection, allows to delete words up to directory separator
+autoload -U select-word-style
+select-word-style bash
+
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}
 do
