@@ -23,6 +23,7 @@ brew 'postgresql'
 brew 'unrar'
 brew 'watch'
 brew 'zsh'
+brew 'kubectl'
 
 brew 'php71', args: ['with-intl']
 brew 'php71-xdebug'
