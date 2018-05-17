@@ -1,14 +1,11 @@
 cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
-tap 'homebrew/dupes'
-tap 'homebrew/versions'
-tap 'homebrew/homebrew-php'
 
 brew 'coreutils'
 brew 'findutils'
 brew 'wget', args: ['enable-iri']
-brew 'homebrew/dupes/grep'
+brew 'grep'
 brew 'vim'
 brew 'git'
 brew 'hub'
@@ -39,7 +36,6 @@ cask 'sequel-pro'
 cask 'phpstorm'
 cask 'docker'
 cask 'spotify'
-cask 'sonos'
 cask 'google-cloud-sdk'
 cask 'little-snitch'
 cask 'sketch'
