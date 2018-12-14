@@ -193,6 +193,7 @@ link_file "$DOTDIR/formulas/git/.gitconfig.local"
 link_file "$DOTDIR/formulas/git/.gitconfig"
 link_file "$DOTDIR/formulas/git/.gitignore"
 test -d ~/.ssh || mkdir ~/.ssh
+test -d ~/.ssh/conf.d || mkdir ~/.ssh/conf.d
 link_file "$DOTDIR/formulas/ssh/config" ".ssh/config"
 link_file "$DOTDIR/formulas/vim/.vimrc"
 link_file "$DOTDIR/formulas/wget/.wgetrc"
