@@ -40,3 +40,5 @@ setopt extendedglob
 
 autoload -U promptinit; promptinit
 prompt pure
+
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
