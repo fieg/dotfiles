@@ -1,2 +1,2 @@
-formulas/git/.gitconfig.local
-formulas/zsh/env.local.zsh
+**/*.local.zsh
+**/*.local
