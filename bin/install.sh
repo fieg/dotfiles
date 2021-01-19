@@ -216,7 +216,3 @@ info "To install Terminal theme, run:\n\n  open $DOTDIR/formulas/terminal/Snazzy
 #success 'softwareupdate'
 
 
-info 'Installing conveyor'
-source $DOTDIR/formulas/conveyor/install.sh
-success 'conveyor installed'
-
