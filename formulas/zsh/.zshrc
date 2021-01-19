@@ -42,5 +42,6 @@ autoload -U promptinit; promptinit
 prompt pure
 
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 eval "$(direnv hook zsh)"
