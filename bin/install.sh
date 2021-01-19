@@ -41,8 +41,11 @@ setup_gitconfig () {
 }
 
 install_brew () {
-  info 'install homebrew'
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  info 'install homebrew (ARM)'
+  mkdir -p /opt/homebrew
+  pushd /opt > /dev/null 2>&1
+  curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+  popd > /dev/null 2>&1
 }
 
 install_dotfiles () {
