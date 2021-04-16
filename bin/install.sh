@@ -202,6 +202,7 @@ link_file "$DOTDIR/formulas/vim/.vimrc"
 link_file "$DOTDIR/formulas/wget/.wgetrc"
 link_file "$DOTDIR/formulas/bash/.inputrc"
 link_file "$DOTDIR/formulas/zsh/.zshrc"
+link_file "$DOTDIR/formulas/direnv/.direnvrc"
 
 # Install pure prompt
 if [ ! -e /usr/local/lib/node_modules/pure-prompt ]

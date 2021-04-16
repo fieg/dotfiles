@@ -1,0 +1,4 @@
+use_docker-machine(){
+  local env=${1:-default}
+  eval $(docker-machine env $env)
+}
