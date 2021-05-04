@@ -4,7 +4,7 @@ tap 'homebrew/bundle'
 
 #brew 'coreutils'
 #brew 'findutils'
-brew 'wget', args: ['enable-iri']
+brew 'wget'
 brew 'grep'
 brew 'vim'
 brew 'git'
