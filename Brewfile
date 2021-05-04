@@ -22,7 +22,7 @@ brew 'zsh'
 brew 'rsync'
 #brew 'kubectl'
 
-brew 'php', args: ['with-intl']
+brew 'php'
 brew 'composer'
 
 #brew 'docker'
