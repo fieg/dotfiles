@@ -65,6 +65,16 @@ update_dotfiles () {
   popd > /dev/null 2>&1
 }
 
+install_pure_prompt () {
+  npm install --global pure-prompt
+
+  # see https://github.com/sindresorhus/pure/issues/584
+  pushd /opt/homebrew/share/zsh/site-functions > /dev/null 2>&1
+  ln -sf /opt/homebrew/lib/node_modules/pure-prompt/async.zsh async
+  ln -sf /opt/homebrew/lib/node_modules/pure-prompt/pure.zsh prompt_pure_setup
+  popd > /dev/null 2>&1
+}
+
 # install command line tools so we have git
 # loops while we don't have the tools installed
 xcode-select -p > /dev/null 2>&1
@@ -206,11 +216,7 @@ link_file "$DOTDIR/formulas/zsh/.zshrc"
 link_file "$DOTDIR/formulas/direnv/.direnvrc"
 
 # Install pure prompt
-if [ ! -e /usr/local/lib/node_modules/pure-prompt ]
-then
-  npm install --global pure-prompt
-fi
-success 'pure-prompt installed'
+(test -e /opt/homebrew/lib/node_modules/pure-prompt || install_pure_prompt) && success 'pure-prompt installed'
 
 # Install terminal theme
 #open "$DOTDIR/formulas/terminal/Snazzy.terminal"
