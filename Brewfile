@@ -22,6 +22,8 @@ brew 'zsh'
 brew 'zsh-syntax-highlighting'
 brew 'zsh-autosuggestions'
 brew 'rsync'
+brew 'tmux'
+brew 'tmuxinator'
 #brew 'kubectl'
 
 brew 'php'

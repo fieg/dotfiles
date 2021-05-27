@@ -214,6 +214,7 @@ link_file "$DOTDIR/formulas/wget/.wgetrc"
 link_file "$DOTDIR/formulas/bash/.inputrc"
 link_file "$DOTDIR/formulas/zsh/.zshrc"
 link_file "$DOTDIR/formulas/direnv/.direnvrc"
+link_file "$DOTDIR/formulas/tmux/.tmux.conf"
 
 # Install pure prompt
 (test -e /opt/homebrew/lib/node_modules/pure-prompt || install_pure_prompt) && success 'pure-prompt installed'
