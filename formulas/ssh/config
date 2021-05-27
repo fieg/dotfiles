@@ -6,6 +6,7 @@ ServerAliveCountMax 36
 
 Host *
    UseKeychain yes
+   IdentityFile ~/.ssh/id_ed25519
    IdentityFile ~/.ssh/id_rsa
    AddKeysToAgent yes
 
