@@ -2,8 +2,8 @@ cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
 
-#brew 'coreutils'
-#brew 'findutils'
+brew 'findutils'
+brew 'make'
 brew 'wget'
 brew 'grep'
 brew 'vim'
