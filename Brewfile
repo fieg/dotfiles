@@ -24,6 +24,7 @@ brew 'zsh-autosuggestions'
 brew 'rsync'
 brew 'tmux'
 brew 'tmuxinator'
+brew 'k9s'
 #brew 'kubectl'
 
 brew 'php'
