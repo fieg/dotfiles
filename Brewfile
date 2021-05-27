@@ -34,6 +34,8 @@ brew 'composer'
 #brew 'docker-machine'
 #brew 'docker-compose'
 
+tap 'homebrew/cask-drivers'
+
 #cask 'dropbox'
 cask '1password'
 cask 'alfred'
