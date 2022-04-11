@@ -1,0 +1,1 @@
+export PATH="$PATH:$(brew --prefix)/opt/python/libexec/bin"
