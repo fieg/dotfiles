@@ -41,7 +41,6 @@ setopt extendedglob # enables additional globbing patterns
 autoload -U promptinit; promptinit
 prompt pure
 
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 [ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && . $(brew --prefix)/etc/profile.d/autojump.sh
 [ -d $(brew --prefix)/share/zsh-syntax-highlighting ] && . $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -d $(brew --prefix)/share/zsh-autosuggestions ] && . $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
