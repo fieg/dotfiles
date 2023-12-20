@@ -4,6 +4,7 @@ Include conf.d/*
 ServerAliveInterval 300
 ServerAliveCountMax 36
 IdentitiesOnly yes
+PubkeyAcceptedKeyTypes +ssh-rsa
 
 Host *
    UseKeychain yes
