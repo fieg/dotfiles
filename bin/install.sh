@@ -40,6 +40,18 @@ setup_gitconfig () {
   sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" $DOTDIR/formulas/git/.gitconfig.local.template > $DOTDIR/formulas/git/.gitconfig.local
 }
 
+setup_brew_api_token () {
+  if [[ -z "${HOMEBREW_GITHUB_API_TOKEN}" ]]; then
+    info 'setup brew api token'
+
+    user 'Enter HOMEBREW_GITHUB_API_TOKEN' </dev/tty
+    read brew_api_token
+    export HOMEBREW_GITHUB_API_TOKEN="$brew_api_token"
+
+    test -f $DOTDIR/formulas/homebrew/env.local.zsh || sed -e "s/BREWTOKEN/$brew_api_token/g" $DOTDIR/formulas/homebrew/env.local.template > $DOTDIR/formulas/homebrew/env.local.zsh
+  fi
+}
+
 install_brew () {
   info 'install homebrew'
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -109,11 +121,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 (test $(which brew) || install_brew) && success 'homebrew'
 
 # Install apps
-if [[ -z "${HOMEBREW_GITHUB_API_TOKEN}" ]]; then
-  user 'Enter HOMEBREW_GITHUB_API_TOKEN' </dev/tty
-  read brew_api_token
-  export HOMEBREW_GITHUB_API_TOKEN="$brew_api_token"
-fi
+setup_brew_api_token
 
 pushd $DOTDIR > /dev/null 2>&1
 brew bundle
