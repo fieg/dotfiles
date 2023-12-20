@@ -218,6 +218,7 @@ link_file "$DOTDIR/formulas/tmux/.tmux.conf"
 # Install terminal theme
 #open "$DOTDIR/formulas/terminal/Snazzy.terminal"
 info "To install Terminal theme, run:\n\n  open $DOTDIR/formulas/terminal/Snazzy.terminal"
+info "To install Catppuccin theme, run:\n\n  open $DOTDIR/formulas/terminal/Catppuccin Mocha.terminal"
 
 #info 'running macOs software update'
 #sudo softwareupdate -i -a
