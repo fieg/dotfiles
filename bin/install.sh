@@ -32,9 +32,9 @@ setup_gitconfig () {
     git_credential='osxkeychain'
   fi
 
-  user -e 'What is your github author name?' </dev/tty
+  user 'What is your github author name?' </dev/tty
   read git_authorname
-  user -e 'What is your github author email?' </dev/tty
+  user 'What is your github author email?' </dev/tty
   read git_authoremail
 
   sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" $DOTDIR/formulas/git/.gitconfig.local.template > $DOTDIR/formulas/git/.gitconfig.local
@@ -108,7 +108,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Install apps
 if [[ -z "${HOMEBREW_GITHUB_API_TOKEN}" ]]; then
-  user -e 'Enter HOMEBREW_GITHUB_API_TOKEN' </dev/tty
+  user 'Enter HOMEBREW_GITHUB_API_TOKEN' </dev/tty
   read brew_api_token
   export HOMEBREW_GITHUB_API_TOKEN="$brew_api_token"
 fi
