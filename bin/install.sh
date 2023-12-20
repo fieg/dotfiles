@@ -107,6 +107,11 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 (test $(which brew) || install_brew) && success 'homebrew'
 
 # Install apps
+if [[ -z "${HOMEBREW_GITHUB_API_TOKEN}" ]]; then
+  user -e 'Enter HOMEBREW_GITHUB_API_TOKEN' </dev/tty
+  read brew_api_token
+  export HOMEBREW_GITHUB_API_TOKEN="$brew_api_token"
+fi
 
 pushd $DOTDIR > /dev/null 2>&1
 brew bundle
