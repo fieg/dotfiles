@@ -41,12 +41,8 @@ setup_gitconfig () {
 }
 
 install_brew () {
-  info 'install homebrew (ARM)'
-  sudo mkdir -p /opt/homebrew
-  sudo chown -R $(whoami) /opt/homebrew
-  pushd /opt > /dev/null 2>&1
-  curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-  popd > /dev/null 2>&1
+  info 'install homebrew'
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
 install_dotfiles () {
