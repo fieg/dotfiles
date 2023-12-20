@@ -1,5 +1,5 @@
 ## Installation
 
 ```
-curl -L https://raw.github.com/fieg/dotfiles/master/bin/install.sh | bash
+/bin/bash -c "$(curl -fsSL https://raw.github.com/fieg/dotfiles/master/bin/install.sh)"
 ```
