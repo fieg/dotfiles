@@ -1,0 +1,1 @@
+alias pstorm=phpstorm
