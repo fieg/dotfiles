@@ -13,7 +13,7 @@ fi
 CODE_PATH=$1
 
 # Always exclude downloads folder
-EXCLUDED_DIRECTORIES=( "~/Downloads" "~/.composer" "~/.npm/" )
+EXCLUDED_DIRECTORIES=( "~/Downloads" "~/.composer" "~/.npm/" "~/Library/Containers/com.docker.docker/Data/vms" )
 
 for EXCLUDED_DIRECTORY in "${EXCLUDED_DIRECTORIES[@]}"; do
   tmutil addexclusion ${EXCLUDED_DIRECTORY}
