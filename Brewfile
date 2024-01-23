@@ -4,6 +4,7 @@ tap 'homebrew/bundle'
 tap 'homebrew/cask-versions'
 
 # Shell utils
+brew 'coreutils'
 brew 'findutils'
 brew 'make'
 brew 'wget'
