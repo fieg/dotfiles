@@ -5,7 +5,7 @@ export DOTDIR=$HOME/.dotfiles
 typeset -U config_files
 config_files=($DOTDIR/**/*.zsh)
 
-export PATH="/usr/local/bin:/usr/local/sbin:$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:$DOTDIR/formulas/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:$DOTDIR/formulas/bin:$HOME/.local/bin"
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}
@@ -46,3 +46,11 @@ prompt pure
 [ -d $(brew --prefix)/share/zsh-autosuggestions ] && . $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 eval "$(direnv hook zsh)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/fieg/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# Added by Antigravity
+export PATH="/Users/fieg/.antigravity/antigravity/bin:$PATH"
