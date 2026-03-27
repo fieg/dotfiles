@@ -1,8 +1,5 @@
 cask_args appdir: '/Applications'
 
-tap 'homebrew/bundle'
-tap 'homebrew/cask-versions'
-
 # Shell utils
 brew 'coreutils'
 brew 'findutils'
