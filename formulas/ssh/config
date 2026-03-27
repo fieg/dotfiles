@@ -7,10 +7,9 @@ IdentitiesOnly yes
 PubkeyAcceptedKeyTypes +ssh-rsa
 
 Host *
-   UseKeychain yes
-   IdentityFile ~/.ssh/id_ed25519
-   IdentityFile ~/.ssh/id_rsa
-   AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_ed25519
+  IdentityFile ~/.ssh/id_rsa
+  AddKeysToAgent yes
 
 Host 127.0.0.1
    StrictHostKeyChecking no

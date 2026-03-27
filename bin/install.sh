@@ -76,12 +76,12 @@ update_dotfiles () {
 }
 
 install_pure_prompt () {
-  npm install --global pure-prompt
+  brew install pure
 
   # see https://github.com/sindresorhus/pure/issues/584
-  pushd /opt/homebrew/share/zsh/site-functions > /dev/null 2>&1
-  ln -sf /opt/homebrew/lib/node_modules/pure-prompt/async.zsh async
-  ln -sf /opt/homebrew/lib/node_modules/pure-prompt/pure.zsh prompt_pure_setup
+  pushd $(brew --prefix)/share/zsh/site-functions > /dev/null 2>&1
+  ln -sf $(brew --prefix)/lib/node_modules/pure-prompt/async.zsh async
+  ln -sf $(brew --prefix)/lib/node_modules/pure-prompt/pure.zsh prompt_pure_setup
   popd > /dev/null 2>&1
 }
 
@@ -128,14 +128,26 @@ brew bundle
 popd > /dev/null 2>&1
 
 # set zsh as the user login shell
-CURRENTSHELL=$(dscl . -read /Users/$USER UserShell | awk '{print $2}')
-if [[ "$CURRENTSHELL" != "/usr/local/bin/zsh" && -e /usr/local/bin/zsh ]]; then
-  info "setting newer homebrew zsh (/opt/homebrew/bin/zsh) as your shell"
-  # sudo bash -c 'echo "/usr/local/bin/zsh" >> /etc/shells'
-  # chsh -s /usr/local/bin/zsh
-  sudo dscl . -change /Users/$USER UserShell $SHELL /opt/homebrew/bin/zsh > /dev/null 2>&1
+CURRENT_SHELL=$SHELL
+EXPECTED_SHELL="$(brew --prefix)/bin/zsh"
+if [ "$(uname -s)" == "Darwin" ]
+then
+  CURRENT_SHELL=$(dscl . -read /Users/$USER UserShell | awk '{print $2}')
 fi
-success 'shell changed'
+if [[ "$CURRENT_SHELL" != "$EXPECTED_SHELL" && -e $EXPECTED_SHELL ]]; then
+  info "setting newer homebrew zsh ($EXPECTED_SHELL) as your shell"
+
+  if [ "$(uname -s)" == "Darwin" ]
+  then
+    sudo dscl . -change /Users/$USER UserShell $CURRENT_SHELL $EXPECTED_SHELL > /dev/null 2>&1
+  else
+    if [ -f "$EXPECTED_SHELL" ]; then echo "$EXPECTED_SHELL" | sudo tee -a /etc/shells; fi
+    chsh -s $EXPECTED_SHELL
+  fi
+
+  success 'shell changed'
+fi
+
 
 link_file () {
   local src="$1" dst="$HOME/${2:-$(basename $1)}"
@@ -227,8 +239,12 @@ link_file "$DOTDIR/formulas/zsh/.zshrc"
 link_file "$DOTDIR/formulas/direnv/.direnvrc"
 link_file "$DOTDIR/formulas/tmux/.tmux.conf"
 
+if [[ "$(uname)" == "Darwin" ]]; then
+  link_file "$DOTDIR/formulas/ssh/usekeychain-macos.conf" "~/.ssh/conf.d/usekeychain-macos.conf"
+fi
+
 # Install pure prompt
-(test -e /opt/homebrew/lib/node_modules/pure-prompt || install_pure_prompt) && success 'pure-prompt installed'
+(brew ls --versions pure || install_pure_prompt) && success 'pure-prompt installed'
 
 # Install terminal theme
 #open "$DOTDIR/formulas/terminal/Snazzy.terminal"

@@ -1,4 +1,6 @@
 # Prefer US English and use UTF-8
+# Could trigger "/bin/bash: warning: setlocale: LC_ALL: cannot change locale (en_US.UTF-8)"
+# If so, run: sudo locale-gen en_US.UTF-8
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
