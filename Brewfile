@@ -27,6 +27,7 @@ brew 'node'
 brew 'tmux'
 brew 'tmuxinator'
 brew 'jq'
+brew 'rg'
 
 # Cloud
 brew 'kubernetes-cli'
@@ -43,9 +44,9 @@ brew 'php'
 brew 'composer'
 
 # Software Essentials
-cask '1password7'
+cask '1password@7'
 cask 'alfred'
-cask 'firefox-developer-edition'
+cask 'firefox@developer-edition'
 cask 'google-chrome'
 cask 'slack'
 cask 'phpstorm'
