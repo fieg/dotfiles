@@ -46,11 +46,3 @@ prompt pure
 [ -d $(brew --prefix)/share/zsh-autosuggestions ] && . $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 eval "$(direnv hook zsh)"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/fieg/.lmstudio/bin"
-# End of LM Studio CLI section
-
-
-# Added by Antigravity
-export PATH="/Users/fieg/.antigravity/antigravity/bin:$PATH"
